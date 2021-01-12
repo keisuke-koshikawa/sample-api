@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: postgres:12.5
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: password
+    ports:
+      - "6000:6000" # 既に5432番ポートが別プロジェクトで使われているため
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+  web:
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3200 -b '0.0.0.0'"
+    volumes:
+      - .:/app
+      - gem_data:/usr/local/bundle
+    ports:
+      - 3200:3200 # 既に別プロジェクトで3000番ポートが使われているため
+    depends_on:
+      - db
+    tty: true
+    stdin_open: true
+volumes:
+  gem_data:
