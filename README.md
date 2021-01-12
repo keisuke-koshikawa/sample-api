@@ -91,3 +91,37 @@ uid: test-user+1@example.com
 
 {"success":true,"data":{"id":1,"provider":"email","uid":"test-user+1@example.com","allow_password_change":false,"name":"テストユーザー","nickname":null,"image":null,"email":"test-user+1@example.com"}}
 ```
+
+## 投稿
+
+```
+$ curl localhost:3200/users/1/posts -X POST -d '{"title":"レビュー", "body":"面白い"}' \
+-H "content-type:application/json" \
+-H "access-token:your-access-token" \
+-H "client:your-client" \
+-H "expiry:1611216898" \
+-H "uid:test-user+1@example.com"
+```
+
+返り値として以下のような値が返れば成功
+
+```
+{"id":1,"title":"レビュー","body":"面白い","user_id":1,"created_at":"2021-01-12T22:27:28.290+09:00","updated_at":"2021-01-12T22:27:28.290+09:00"}
+```
+
+## 一覧取得
+
+```
+curl localhost:3200/users/1/posts -H "content-type:application/json" \
+-H "content-type:application/json" \
+-H "access-token:your-access-token" \
+-H "client:your-client" \
+-H "expiry:1611216898" \
+-H "uid:test-user+1@example.com"
+```
+
+返り値として以下のような値が返れば成功
+
+```
+[{"id":1,"title":"レビュー","body":"面白い","user_id":1,"created_at":"2021-01-12T22:27:28.290+09:00","updated_at":"2021-01-12T22:27:28.290+09:00"}]
+```
