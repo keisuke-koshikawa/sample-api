@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails6 APIモード + devise_token_auth で認証機能付きのAPIを作成しました。
 
-Things you may want to cover:
+# 開発環境構築手順
 
-* Ruby version
+```
+$ git clone https://github.com/keisuke-koshikawa/sample-api
 
-* System dependencies
+$ cd sample-api
 
-* Configuration
+$ docker-compose build
 
-* Database creation
+$ docker-compose run web rails db:create
 
-* Database initialization
+$ docker-compose run web rails db:migrate
 
-* How to run the test suite
+$ docker-compose run web rails db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+$ docker-compose up -d
+```
 
-* Deployment instructions
+# 開発中によく使うコマンド
 
-* ...
+```
+# コンテナを停止したい時
+$ docker-compose down
+
+# Gemファイルを編集した時
+$ docker-compose down
+
+$ docker-compose build
+
+$ docker-compose up -d
+
+# コンテナの起動状況を確認したい時
+
+$ docker-compose ps
+
+# コンテナを強制的に削除したい時
+
+$ docker rm -f container_id
+
+# イメージを強制的に削除したい時
+
+$ docker rmi -f image_id
+```
