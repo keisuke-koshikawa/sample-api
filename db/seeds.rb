@@ -16,5 +16,7 @@ ActiveRecord::Base.transaction do
     )
     post.icatch.attach(io: File.open(Rails.root + 'db/seed_data/vue-rails.png'), filename: 'vue-rails.png')
     post.save!
+
+    puts "successed create #{post.title}"
   end
 end
