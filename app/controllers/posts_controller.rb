@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :update, :destroy]
+  before_action :set_post, only: [:show, :update]
   before_action :authenticate_user!
 
   def index
-    @posts = current_user.posts.with_attached_icatch
+    @posts = Post.all
   end
 
   def show
@@ -25,10 +25,6 @@ class PostsController < ApplicationController
     else
       render json: @post.errors, status: :unprocessable_entity
     end
-  end
-
-  def destroy
-    @post.destroy
   end
 
   private
