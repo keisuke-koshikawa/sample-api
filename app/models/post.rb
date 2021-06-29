@@ -1,4 +1,6 @@
 class Post < ApplicationRecord
+  acts_as_copy_target
+
   include Rails.application.routes.url_helpers
 
   belongs_to :user
