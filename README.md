@@ -125,3 +125,18 @@ curl localhost:3200/users/1/posts -H "content-type:application/json" \
 ```
 [{"id":1,"title":"レビュー","body":"面白い","user_id":1,"created_at":"2021-01-12T22:27:28.290+09:00","updated_at":"2021-01-12T22:27:28.290+09:00"}]
 ```
+
+## 2要素認証のテスト
+
+### ユーザーを2要素認証前に戻したい
+
+```
+$ id = # 戻したいユーザーのID
+
+User.find(id).update!(
+  otp_required_for_login: false,
+  encrypted_otp_secret: nil,
+  encrypted_otp_secret_iv: nil,
+  encrypted_otp_secret_salt: nil,
+)
+```

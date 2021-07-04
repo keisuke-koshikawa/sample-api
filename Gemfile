@@ -12,6 +12,8 @@ gem 'rack-cors'
 gem 'devise'
 gem 'devise_token_auth'
 gem 'omniauth-github'
+gem 'devise-two-factor'
+gem 'fhir_client'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
